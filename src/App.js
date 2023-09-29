@@ -18,7 +18,7 @@ function App() {
   return (
     <div className="App">
       <ToastContainer />
-      <BrowserRouter>
+      <BrowserRouter ="The-eBag-mart">
         <Routes>
           <Route
             path="/"
