@@ -18,7 +18,7 @@ function App() {
   return (
     <div className="App">
       <ToastContainer />
-      <BrowserRouter>
+      <HashRouter>
         <Routes>
           <Route
             path="/"
@@ -69,7 +69,7 @@ function App() {
           <Route path="/login" exact element={<LoginPage />} />
           <Route path="/register" exact element={<RegisterPage />} />
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </div>
   );
 }
