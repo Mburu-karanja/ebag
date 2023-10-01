@@ -69,7 +69,6 @@ function App() {
           <Route path="/login" exact element={<LoginPage />} />
           <Route path="/register" exact element={<RegisterPage />} />
         </Routes>
-            <Link to = "/the-ebag-mart"></Link>
       </BrowserRouter>
     </div>
   );
