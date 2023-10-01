@@ -18,7 +18,7 @@ function App() {
   return (
     <div className="App">
       <ToastContainer />
-      <BrowserRouter>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
         <Routes>
           <Route
             path="/"
@@ -69,6 +69,7 @@ function App() {
           <Route path="/login" exact element={<LoginPage />} />
           <Route path="/register" exact element={<RegisterPage />} />
         </Routes>
+            <Link to = "/the-ebag-mart"></Link>
       </BrowserRouter>
     </div>
   );
