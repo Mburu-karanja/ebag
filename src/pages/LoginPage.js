@@ -1,10 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
 import Loader from "../components/Loader";
-import GoogleButton from "react-google-button";
 
 function LoginPage() {
   const [email, setEmail] = useState("");
@@ -12,7 +10,6 @@ function LoginPage() {
   const [cpassword, setCPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const auth = getAuth();
-  const  navigate =useNavigate();
   const login = async () => {
     try {
       setLoading(true);
@@ -37,7 +34,7 @@ function LoginPage() {
       <div className="row justify-content-center">
         <div className="col-md-4 z1">
           <div className="login-form">
-            <h2><b>Login</b></h2>
+            <h2>Login</h2>
 
             <hr />
 
@@ -62,12 +59,10 @@ function LoginPage() {
             
 
             <button className="my-3" onClick={login}>Login</button>
-            <p>--- or ---</p>
+
             <hr />
-           <button  ><GoogleButton style={{ width: "100px", height: "50px",}}/></button>
-            <hr/>
-            <Link to='/register'><h6><em>New on The-eBag_mart?</em> Join now</h6>
-</Link>
+
+            <Link to='/register'>Click Here To Register</Link>
           </div>
         </div>
         <div className="col-md-5 z1">
