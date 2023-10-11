@@ -3,7 +3,6 @@ import Layout from "../components/Layout";
 import { getDoc, doc } from "firebase/firestore";
 import fireDB from "../fireConfig";
 import { useParams } from "react-router";
-import Rating from "react-rating";
 import { useDispatch, useSelector } from "react-redux";
 function ProductInfo() {
   const [product, setProduct] = useState();
@@ -48,14 +47,7 @@ function ProductInfo() {
                   <h3><b>{product.name}</b></h3>
                 </p>
                 <img src={product.imageURL} className="product-info-img" />
-                <p><em>{product.description}</em></p>              
-                <Rating
-                  fractions={2}
-        initialRating={rating1}
-        onClick={rate => setRating1(rate)}
-      />
-      <p>Rating: {rating1}</p>
- 
+                <p><em>{product.description}</em></p> 
                <hr />   
                 <div className="d-flex justify-content-end my-3">
                   <button onClick={()=>addToCart(product)}>ADD TO CART</button>
