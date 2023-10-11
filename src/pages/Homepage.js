@@ -98,7 +98,7 @@ function Homepage() {
                       </div>
                     </div>
                     <div className="product-actions">
-                      <h2> $ {product.price} </h2>
+                      <h2> KSHs/={product.price} </h2>
                       <div className="d-flex">
                         <button
                           className="mx-2"
