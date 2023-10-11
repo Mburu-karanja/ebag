@@ -96,7 +96,7 @@ function CartPage() {
       </table>
 
       <div className="d-flex justify-content-end">
-        <h1 className="total-amount">Total Amount = $ {totalAmount}</h1>
+        <h1 className="total-amount">Total Amount = KSHs/={totalAmount}</h1>
       </div>
       <div className="d-flex justify-content-end mt-3">
         <button onClick={handleShow}>PLACE ORDER</button>
