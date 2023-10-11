@@ -20,7 +20,6 @@ function AdminPage() {
     price: 0,
     imageURL: "",
     description: "",
-    rating: "",
   });
 
   const [show, setShow] = useState(false);
@@ -143,7 +142,6 @@ function AdminPage() {
                 <th>Name</th>
                 <th>Description</th>
                 <th>Price</th>
-                <th>Rating</th>
                 <th>Action</th>
               </tr>
             </thead>
@@ -158,7 +156,6 @@ function AdminPage() {
                     <td>{item.name}</td>
                     <td>{item.description}</td>
                     <td>{item.price}</td>
-                    <td>{item.rating}</td>
                     <td>
                       <FaTrash
                         color="red"
@@ -225,16 +222,6 @@ function AdminPage() {
                     setProduct({ ...product, description: e.target.value })
                   }
                 />
-                 <input
-                  type="text"
-                  value={product.rating}
-                  className="form-control"
-                  placeholder="rating"
-                  onChange={(e) =>
-                    setProduct({ ...product, rating: e.target.value })
-                  }
-                />
-
                 <hr />
               </div>
             </Modal.Body>
