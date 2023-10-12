@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { FaBars, FaCartPlus, FaUser } from "react-icons/fa";
 import { useSelector } from "react-redux";
+import { auth } from "../fireConfig";
 
 function Header() {
   const { cartItems } = useSelector((state) => state.cartReducer);
@@ -35,7 +36,8 @@ function Header() {
             <ul className="navbar-nav ms-auto">
               <li className="nav-item">
                 <Link className="nav-link active" aria-current="page" to="/">
-                  <FaUser/>{user.email.substring(0, user.email.length - 10)}
+                  <FaUser/> {user.email.substring(0, user.email.length - 10)}
+                  {auth.currentUser?.displayName}
                 </Link>
               </li>
               <li className="nav-item">
@@ -58,6 +60,7 @@ function Header() {
           </div>
         </div>
       </nav>
+      <div></div>
     </div>
   );
 }
