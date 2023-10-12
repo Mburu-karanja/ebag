@@ -46,6 +46,7 @@ function ProductInfo() {
                 <p>
                   <h3><b>{product.name}</b></h3>
                 </p>
+                <hr/>
                 <img src={product.imageURL} className="product-info-img" />
                 <p><em>{product.description}</em></p> 
                <hr />   
