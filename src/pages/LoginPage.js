@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { toast } from "react-toastify";
+import {auth, provider} from "../fireConfig";
+import { useNavigate } from "react-router-dom";
 import Loader from "../components/Loader";
+import GoogleButton from "react-google-button";
 
 function LoginPage() {
   const [email, setEmail] = useState("");
@@ -10,6 +13,7 @@ function LoginPage() {
   const [cpassword, setCPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const auth = getAuth();
+  const navigate = useNavigate();
   const login = async () => {
     try {
       setLoading(true);
@@ -28,6 +32,13 @@ function LoginPage() {
       setLoading(false);
     }
   };
+  const signInWithGoogle = async () => {
+    const result = await signInWithPopup(auth, provider);
+    console.log(result);
+    navigate("/");
+  };
+  
+
   return (
     <div className="login-parent">
       {loading && <Loader />}
@@ -59,9 +70,10 @@ function LoginPage() {
             
 
             <button className="my-3" onClick={login}>Login</button>
-
+           <p> --- or ---</p>
             <hr />
-
+            <button onClick={signInWithGoogle}><GoogleButton/></button>
+            <hr />
             <Link to='/register'>Click Here To Register</Link>
           </div>
         </div>
