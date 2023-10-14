@@ -3,30 +3,35 @@ import { Link } from "react-router-dom";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import Loader from "../components/Loader";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+
 function RegisterPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [cpassword, setCPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const auth = getAuth();
+  const navigate = useNavigate();
 
   const register = async () => {
-  try {
-    setLoading(true);
-    const result = await createUserWithEmailAndPassword(auth, email, password);
-    console.log(result);
-    setLoading(false);
-    toast.success("Registration successful");
-    setEmail("");
-    setPassword("");
-    setCPassword("");
-    window.location.reload(); // Reload the page
-  } catch (error) {
-    console.log(error);
-    toast.error("Registration failed");
-    setLoading(false);
-  }
-};
+    try {
+      setLoading(true);
+      const result = await createUserWithEmailAndPassword(auth, email, password);
+      console.log(result);
+      setLoading(false);
+      toast.success("Registration successful");
+      setEmail("");
+      setPassword("");
+      setCPassword("");
+      navigate("/login"); // Redirect to login page
+      window.location.href= "/login";
+    } catch (error) {
+      console.log(error);
+      toast.error("Registration failed");
+      setLoading(false);
+      window.location.reload();
+    }
+  };
 
   return (
     <div className="register-parent">
