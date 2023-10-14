@@ -11,25 +11,22 @@ function RegisterPage() {
   const auth = getAuth();
 
   const register = async () => {
-    try {
-      setLoading(true);
-      const result = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-      console.log(result);
-      setLoading(false);
-      toast.success("Registration successfull");
-      setEmail('')
-      setPassword('')
-      setCPassword('')
-    } catch (error) {
-      console.log(error);
-      toast.error("Registration failed");
-      setLoading(false);
-    }
-  };
+  try {
+    setLoading(true);
+    const result = await createUserWithEmailAndPassword(auth, email, password);
+    console.log(result);
+    setLoading(false);
+    toast.success("Registration successful");
+    setEmail("");
+    setPassword("");
+    setCPassword("");
+    window.location.reload(); // Reload the page
+  } catch (error) {
+    console.log(error);
+    toast.error("Registration failed");
+    setLoading(false);
+  }
+};
 
   return (
     <div className="register-parent">
