@@ -17,7 +17,7 @@ function CartPage() {
   const handleShow = () => setShow(true);
 
   const [name, setName] = useState("");
-  const [address, setAddress] = useState("");
+  const [location, setAddress] = useState("");
   const [pincode, setPincode] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [loading, setLoading] = useState(false);
@@ -36,11 +36,25 @@ function CartPage() {
     dispatch({ type: "DELETE_FROM_CART", payload: product });
   };
 
+  const sendWhatsAppMessage = () => {
+    const products = cartItems.map((item) => {
+      return `Name: ${item.name}%0A` +
+             `Price: KSHs ${item.price}%0A` +
+             `Description: ${item.description}%0A` +
+             `Image: ${item.imageURL}%0A%0A`;
+    }).join("");
+
+    const message = `New Order:%0A%0A${products}`;
+
+    const phoneNumber = "+254797605689"; // Replace with your phone number or the desired recipient's phone number
+
+    window.open(`https://wa.me/${phoneNumber}?text=${message}`, "_blank");
+  };
+
   const placeOrder = async () => {
     const addressInfo = {
       name,
-      address,
-      pincode,
+      location,
       phoneNumber,
     };
 
@@ -58,7 +72,8 @@ function CartPage() {
       const result = await addDoc(collection(fireDB, "orders"), orderInfo);
       setLoading(false);
       toast.success("Order placed successfully");
-      handleClose()
+      handleClose();
+      sendWhatsAppMessage(); // Send WhatsApp message after placing the order
     } catch (error) {
       setLoading(false);
       toast.error("Order failed");
@@ -79,9 +94,9 @@ function CartPage() {
         <tbody>
           {cartItems.map((item) => {
             return (
-              <tr>
+              <tr key={item.productId}>
                 <td>
-                  <img src={item.imageURL} height="80" width="80" />
+                  <img src={item.imageURL} alt="Product" height="80" width="80" />
                 </td>
 
                 <td>{item.name}</td>
@@ -96,7 +111,7 @@ function CartPage() {
       </table>
 
       <div className="d-flex justify-content-end">
-        <h1 className="total-amount">Total Amount = KSHs/={totalAmount}</h1>
+        <h1 className="total-amount">Total Amount = KSHs {totalAmount}</h1>
       </div>
       <div className="d-flex justify-content-end mt-3">
         <button onClick={handleShow}>PLACE ORDER</button>
@@ -104,15 +119,12 @@ function CartPage() {
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Add your address</Modal.Title>
+          <Modal.Title>Enter your details</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {" "}
           <div className="register-form">
-            <h2>Register</h2>
-
+            <h2>Fill in</h2>
             <hr />
-
             <input
               type="text"
               className="form-control"
@@ -125,24 +137,13 @@ function CartPage() {
             <textarea
               className="form-control"
               rows={3}
-              type="text"
-              className="form-control"
-              placeholder="address"
-              value={address}
-              onChange={(e) => {
+              placeholder="location"
+              value={location}
+             onChange={(e) => {
                 setAddress(e.target.value);
               }}
             />
-            <input
-              className="form-control"
-              placeholder="pincode"
-              type="number"
-              value={pincode}
-              onChange={(e) => {
-                setPincode(e.target.value);
-              }}
-            />
-
+           
             <input
               type="number"
               className="form-control"
