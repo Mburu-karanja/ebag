@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import { auth, provider, twitterProvider, facebookProvider } from "../fireConfig";
 import { useNavigate } from "react-router-dom";
 import Loader from "../components/Loader";
-import GoogleButton from "react-google-button";
+import {LiaGoogle, LiaFacebookF, LiaTwitter} from "react-icons/lia";
 
 function LoginPage() {
   const [email, setEmail] = useState("");
@@ -102,11 +102,11 @@ function LoginPage() {
             </button>
             <p>--- or ---</p>
             <hr />
-            <button className="rounded-button" onClick={signInWithGoogle}>
+            <button className="rounded-button my-1" onClick={signInWithGoogle}><LiaGoogle/>
             Sign in with Google
             </button><br/>
-            <button className="rounded-button" onClick={signInWithTwitter}>Sign in with Twitter</button>
-            <button className="rounded-button" onClick={signInWithFacebook}>Sign in with Facebook</button>
+            <button className="rounded-button my-1" onClick={signInWithTwitter}><LiaFacebookF/>Sign in with Twitter</button>
+            <button className="rounded-button my-1" onClick={signInWithFacebook}><LiaTwitter/>Sign in with Facebook</button>
             <hr />
             <Link to="/register">Click Here To Register</Link>
           </div>
