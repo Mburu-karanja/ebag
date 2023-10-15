@@ -97,16 +97,14 @@ function LoginPage() {
               }}
             />
 
-            <button className="my-3" onClick={login}>
+            <button className="rounded-button my-3" onClick={login}>
               Login
             </button>
             <p>--- or ---</p>
             <hr />
-            <button className="rounded-button my-1" onClick={signInWithGoogle}><LiaGoogle/>
-            Sign in with Google
-            </button><br/>
-            <button className="rounded-button my-1" onClick={signInWithTwitter}><LiaFacebookF/>Sign in with Twitter</button>
-            <button className="rounded-button my-1" onClick={signInWithFacebook}><LiaTwitter/>Sign in with Facebook</button>
+            <button className="btn btn-outline-primary my-1" onClick={signInWithGoogle}><LiaGoogle/>Sign in with Google</button><br/>
+            <button className="btn btn-outline-primary my-1" onClick={signInWithTwitter}><LiaFacebookF/>Sign in with Twitter</button>
+            <button className="btn btn-outline-primary my-1" onClick={signInWithFacebook}><LiaTwitter/>Sign in with Facebook</button>
             <hr />
             <Link to="/register">Click Here To Register</Link>
           </div>
