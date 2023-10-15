@@ -88,7 +88,8 @@ function ProductInfo() {
                 <div>
                   <p>Rate this product:</p>
                   <StarRating
-                    rating={rating}
+                    fraction={2}
+                   rating={rating}
                     onRatingChange={handleRatingChange}
                     hoverRating={hoverRating} // Pass hoverRating as a prop
                     setHoverRating={setHoverRating} // Pass setHoverRating as a prop
