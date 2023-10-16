@@ -123,7 +123,7 @@ function CartPage() {
         </Modal.Header>
         <Modal.Body>
           <div className="register-form">
-            <h2>Fill in</h2>
+            <h5><em>Order to whatsApp me</em></h5>
             <hr />
             <input
               type="text"
