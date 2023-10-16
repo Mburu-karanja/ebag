@@ -39,6 +39,7 @@ function OrdersPage() {
               <tr>
                 <th>Image</th>
                 <th>Name</th>
+                <th>Description</th>
                 <th>Price</th>
               </tr>
             </thead>
@@ -51,6 +52,7 @@ function OrdersPage() {
                     </td>
 
                     <td>{item.name}</td>
+                    <td>{item.description}</td>
                     <td>{item.price}</td>
                   </tr>
                 );
