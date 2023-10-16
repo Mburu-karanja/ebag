@@ -53,7 +53,7 @@ function OrdersPage() {
 
                     <td>{item.name}</td>
                     <td>{item.description}</td>
-                    <td>{item.price}</td>
+                    <td>KSHs/={item.price}</td>
                   </tr>
                 );
               })}
