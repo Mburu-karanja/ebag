@@ -106,7 +106,7 @@ function LoginPage() {
             <button className="btn btn-outline-primary my-1" onClick={signInWithTwitter}><LiaFacebookF/>Sign in with Twitter</button>
             <button className="btn btn-outline-primary my-1" onClick={signInWithFacebook}><LiaTwitter/>Sign in with Facebook</button>
             <hr />
-            <Link to="/register">Click Here To Register</Link>
+            <Link to="/register"><button className="rounded-button my-3">Click Here To Register</button></Link>
           </div>
         </div>
         <div className="col-md-5 z1">
